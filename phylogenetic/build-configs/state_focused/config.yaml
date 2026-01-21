@@ -4,31 +4,31 @@
 
 #custom_rules:
 #    - build-configs/state_focused/copy_from_ingest.smk
-builds: 'genome'
+builds: 'N450'
 custom_subsample:
-    genome:
+    N450:
         defaults:
             exclude_ambiguous_dates_by: year  
         samples:
             state:
-                query: division == "Washington"
+                query: division == "Texas"
                 max_sequences: 2000
-                min_length: 5000
-                min_date: "1950"
+                min_length: 400
+                min_date: "2023"
                 exclude:
                     - defaults/dropped_strains.txt
             continental:
-                query: division != "Washington" & region == "North America"
+                query: division != "Texas" & region == "North America"
                 max_sequences: 2000
-                min_length: 5000
-                min_date: "1950"
+                min_length: 400
+                min_date: "2023"
                 exclude:
                     - defaults/dropped_strains.txt
             global:
                 query: region != "North America"
-                max_sequences: 2000
-                min_length: 5000
-                min_date: "1950"
+                max_sequences: 1000
+                min_length: 400
+                min_date: "2023"
                 include:
                     - defaults/include_strains_genome.txt
                 exclude:
