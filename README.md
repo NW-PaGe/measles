@@ -44,7 +44,7 @@
     - Vaccine escape has not been observed, but should be monitored.
 
 - Additional Resources
-  - [Global Measles and Rubell Laboratory Netowrk](https://www.who.int/europe/initiatives/measles-and-rubella-laboratory-network) 
+  - [Global Measles and Rubell Laboratory Netowrk](https://www.who.int/europe/initiatives/measles-and-rubella-laboratory-network)
   - [Most Recent WHO Measles Nomenclature Update - 2012](https://www.who.int/publications/i/item/WER8709)
 
 ## Scientific Decisions
@@ -116,7 +116,7 @@ builds: 'genome'
 custom_subsample:
     genome:
         defaults:
-            exclude_ambiguous_dates_by: year  
+            exclude_ambiguous_dates_by: year
         samples:
 ```
 
@@ -150,7 +150,7 @@ After successfully running the build there will be two output folders containing
 - `results/` folder contains the `genome` folder containing intermediate outputs from the respective workflows.
 
 ### Visualize Results
-- Option 1: Open [auspice.us](auspice.us) in a web browser, and drop in `measles_genome.json` as input. 
+- Option 1: Open [auspice.us](auspice.us) in a web browser, and drop in `measles_genome.json` as input.
 - Option 2: Run `nextstrain view .` from your `measles/phylogenetic/` folder.
 
 - To learn more about how to make epidemiologic inferences from phylogenetic trees, see [The Applied Genomic Epidemiology Handbook](https://www.czbiohub.org/ebook/applied-genomic-epidemiology-handbook/welcome-to-the-applied-genomic-epidemiology-handbook/).
