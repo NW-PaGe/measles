@@ -8,7 +8,7 @@ builds: 'genome'
 custom_subsample:
     genome:
         defaults:
-            exclude_ambiguous_dates_by: year  
+            exclude_ambiguous_dates_by: year
         samples:
             state:
                 query: division == "Washington"
