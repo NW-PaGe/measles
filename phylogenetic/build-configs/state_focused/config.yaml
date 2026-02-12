@@ -4,6 +4,11 @@
 
 #custom_rules:
 #    - build-configs/state_focused/copy_from_ingest.smk
+additional_inputs:
+  - name: private
+    metadata: ../placement/sidecar.tsv
+    sequences: ../placement/private_sequences.fasta
+
 builds: 'genome'
 custom_subsample:
     genome:
