@@ -1,8 +1,3 @@
-additional_inputs:
-  - name: private
-    metadata: ../placement/sidecar.tsv
-    sequences: ../placement/private_sequences.fasta
-
 builds: 'genome'
 custom_subsample:
     genome:

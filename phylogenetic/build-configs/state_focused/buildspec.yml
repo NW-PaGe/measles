@@ -29,7 +29,7 @@ env:
     # -------------------------------------------------------------------------
     BUILD_NAME: "Measles"
     BUILD_TARGET: "phylogenetic"
-    CONFIG_FILES: "build-configs/nextstrain-automation/config.yaml build-configs/state_focused/config.yaml"
+    CONFIG_FILES: "build-configs/nextstrain-automation/config.yaml build-configs/state_focused/public-config.yaml"
     NEXTSTRAIN_GROUP: "nextstrain.org/groups/wadoh-private"
 
     # -------------------------------------------------------------------------
