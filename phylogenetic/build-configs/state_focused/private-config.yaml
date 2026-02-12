@@ -2,7 +2,10 @@ additional_inputs:
   - name: private
     metadata: ../placement/sidecar.tsv
     sequences: ../placement/private_sequences.fasta
-
+  - name: ppx_restricted
+    metadata: "s3://nextstrain-data/files/workflows/measles/metadata_restricted.tsv.zst"
+    sequences: "s3://nextstrain-data/files/workflows/measles/sequences_restricted.fasta.zst"
+    
 builds: 'genome'
 custom_subsample:
     genome:
