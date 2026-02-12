@@ -101,32 +101,6 @@ An alternative configuration file is present for running the phylogenetic workfl
 nextstrain build . --configfile build-configs/ci/config.yaml
 ```
 
-## Modify the Build to Use Data Straight from NCBI
-When running this build, data are downloaded from the Nextstrain measles data repository. This repository is updated at regular intervals; however, if you wish to pull the latest data directly from NCBI, you can run your own ingest workflow.
-
-First, comment out the custom rules section of the build-configs/state_focused/config.yaml. The top of the file looks like this:
-```
-### Uncomment the custom rules section below to:
-### - pull preferentially from the ingest results.
-### See README.md for more information
-
-#custom_rules:
-#    - build-configs/state_focused/copy_from_ingest.smk
-builds: 'genome'
-custom_subsample:
-    genome:
-        defaults:
-            exclude_ambiguous_dates_by: year
-        samples:
-```
-
-You can run the ingest workflow first by running `nextstrain build .` from the `ingest` directory. After these edit to the `config.yaml`, the state-focused build will now always check for data in the `ingest/results` directory, and build preferentially from those. When they are not present, the build pulls data from Nextstrain. If you want to make sure you are always pulling the most recent data from NCBI, navigate to the main `measles/` directory and run the following:
-
-```
-nextstrain build ingest --forceall &&
-nextstrain build phylogenetic --configfile build-configs/state_focused/config.yaml
-```
-
 ### Expected Outputs
 The file structure of the `phylogenetic/` directory is as follows with `*`" folders denoting folders that are the build's expected outputs.
 
