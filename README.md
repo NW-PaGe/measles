@@ -58,10 +58,10 @@ Nextstrain builds are designed for specific purposes and not all types of builds
 - **Inclusion/Exclusion**: Strains isolated from subacute sclerosing panencephalitis (SSPE) cases are excluded, as they contain hypermutations that prevent strain designation, and do not shed typically, making them very atypical strains overall. Vaccine reference strains (A- genotypes) are force-included following all other subsampling procedures.
 
 ### Data Sources & Inputs
-This build relies on publicly available data sourced from [data sources].
+This build pulls from data from the Nextstrain dataset, which is curated from [NCBI](https://www.ncbi.nlm.nih.gov/) and [Pathoplexus](https://pathoplexus.org/measles/search?). Note that the Pathoplexus data includes restricted data, and must comply with [Terms of Use](https://pathoplexus.org/about/terms-of-use/restricted-data).
 
-- **Sequence Data**: All sequence data originate from [NCBI](https://www.ncbi.nlm.nih.gov/).
-- **Metadata**: All metadata originate from [NCBI](https://www.ncbi.nlm.nih.gov/).
+- **Sequence Data**: All sequence data originate from [Pathoplexus](https://pathoplexus.org/measles/search?) and [NCBI](https://www.ncbi.nlm.nih.gov/).
+- **Metadata**: All metadata originate from [Pathoplexus](https://pathoplexus.org/measles/search?) and [NCBI](https://www.ncbi.nlm.nih.gov/).
 - **Expected Inputs**:
     - `measles/phylogenetic/data/sequences.fasta.zst` (containing viral genome sequences)
     - `measles/phylogenetic/data/metadata.tsv.zst` (with relevant sample information)
@@ -87,12 +87,12 @@ cd measles/phylogenetic/
 Make sure you are located in the build folder `phylogenetic` before running the build command:
 
 ```
-nextstrain build . --configfile build-configs/state_focused/config.yaml
+nextstrain build . --configfile build-configs/state_focused/public-config.yaml
 ```
 
-When you run the build using the above command, Nextstrain uses Snakemake as the workflow manager to automate genomic analyses. The Snakefile in a Nextstrain build defines how raw input data (sequences and metadata) are processed step-by-step in an automated way. Nextstrain builds are powered by Augur (for phylogenetics) and Auspice (for visualization) and Snakemake is used to automate the execution of these steps using Augur and Auspice based on file dependencies.
+When you run the build using the above command, Nextstrain uses Snakemake as the workflow manager to automate genomic analyses. The Snakefile in a Nextstrain build defines how raw input data (sequences and metadata) are processed step-by-step in an automated way. Nextstrain builds are powered by [Augur](https://docs.nextstrain.org/projects/augur/en/stable/) (for phylogenetics) and [Auspice](https://docs.nextstrain.org/projects/auspice/en/stable/) (for visualization), and Snakemake is used to automate the execution of these steps using Augur and Auspice based on file dependencies.
 
-Alternative configuration files can be specified to customize the workflow. In this case, `--configfile build-configs/state_focused/config.yaml` tweaks the workflow such that samples are pulled preferentially from Washington state, then North America, then globally, with numbers of samples from each layer specified in the `config.yaml`.
+Alternative configuration files can be specified to customize the workflow. In this case, `--configfile build-configs/state_focused/public-config.yaml` tweaks the workflow such that samples are pulled preferentially from Washington state, then North America, then globally, with numbers of samples from each layer specified in the `public-config.yaml`.
 
 ## Run the Build with Test Data (Optional)
 An alternative configuration file is present for running the phylogenetic workflow on a smaller example data set. In this case, `--configfile build-configs/ci/config.yaml` tweaks the workflow such this dataset located in `phylogenetic/example_data` gets copied to `phylogenetic/data`, and bypasses the default steps of downloading and decompressing the full dataset provided by Nextstrain.
@@ -132,7 +132,7 @@ After successfully running the build there will be two output folders containing
 
 ## Customization for Local Adaptation
 
-This build can be customized for use by other states. This is configurable by editing a single file, `measles/phylogenetic/build-configs/state_focused/config.yaml`. To change the focal state, change the `division` on line 4 of the config file. Simply replace "Washington" with your state of interest.
+This build can be customized for use by other states. This is configurable by editing a single file, `measles/phylogenetic/build-configs/state_focused/public-config.yaml`. To change the focal state, change the `division` in the config file under `[custom_subsample] -> [genome] -> [samples] -> [state] -> [query]`. Replace "Washington" with your state of interest.
 
 ## Contributing
 For any questions please submit them to our [Discussions](https://github.com/orgs/NW-PaGe/discussions) page. Software issues and requests can be logged as a Git [Issue](https://github.com/NW-PaGe/measles/issues).
