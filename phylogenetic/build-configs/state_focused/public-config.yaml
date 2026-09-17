@@ -34,6 +34,12 @@ custom_subsample:
                     - defaults/include_strains_genome.txt
                 exclude:
                     - defaults/dropped_strains.txt
+            nearest-strains:
+                method: hamming
+                focal_sample: state
+                context_sample: continental
+                k: 20
+                ignore_missing_data: all
 refine:
     genome/north-america: >-
         --timetree
