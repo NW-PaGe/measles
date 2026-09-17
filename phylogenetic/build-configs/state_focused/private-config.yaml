@@ -38,6 +38,13 @@ custom_subsample:
                     - defaults/include_strains_genome.txt
                 exclude:
                     - defaults/dropped_strains.txt
+            nearest-strains:
+                method: hamming
+                focal_sample: global
+                context_sample: continental
+                k: 20
+                ignore_missing_data: all
+
     genome/north-america:
         defaults:
             exclude_ambiguous_dates_by: year
@@ -65,6 +72,12 @@ custom_subsample:
                     - defaults/include_strains_genome.txt
                 exclude:
                     - defaults/dropped_strains.txt
+            nearest-strains:
+                method: hamming
+                focal_sample: global
+                context_sample: continental
+                k: 20
+                ignore_missing_data: all
 refine:
     genome/global: >-
         --timetree
@@ -82,3 +95,26 @@ refine:
         --clock-filter-iqd 8
         --stochastic-resolve
         --divergence-units mutations
+
+export:
+    genome/global: &general_export
+        metadata_columns:
+            - strain
+            - division
+            - location
+            - dataUseTerms
+            - restrictedUntil
+            - PPX_accession
+            - INSDC_accession
+            - county
+        color_by_metadata:
+            - genotype
+            - date
+            - county
+            - division
+            - region
+            - country
+            - genotype_ppx
+            - dataUseTerms
+    genome/north-america:
+      <<: *general_export
