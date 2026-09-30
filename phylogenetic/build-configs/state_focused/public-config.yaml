@@ -12,7 +12,7 @@ custom_subsample:
             exclude_ambiguous_dates_by: year
         samples:
             state:
-                query: division == "Washington"
+                query: division == "Washington" & institution == "Washington State Department of Health Public Health Labs, Division of Disease Control and Statistics"
                 max_sequences: 3000
                 min_length: 13000
                 min_date: "1950"
